@@ -1,10 +1,10 @@
 package com.comp304.bastian.bastian.lab4.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.room.Room
-import com.comp304.bastian.bastian.lab4.R
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityMainBinding
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
@@ -19,8 +19,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "Nurses").build()
+        database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").build()
         viewModel.initDatabase(database)
-        viewModel.defineDefaultNurses()
+        viewModel.signUpNurses()
+
+        binding.loginButton.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }

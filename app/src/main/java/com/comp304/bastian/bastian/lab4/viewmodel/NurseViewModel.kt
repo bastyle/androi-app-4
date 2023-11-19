@@ -29,12 +29,6 @@ class NurseViewModel () : ViewModel() {
         }
     }
 
-    /*fun getDataByFirstName(firstName: String) {
-        viewModelScope.launch {
-            _userLiveData.postValue(repo.getUserByFirstName(firstName))
-        }
-    }*/
-
     fun initDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = MedicalRepo(database)

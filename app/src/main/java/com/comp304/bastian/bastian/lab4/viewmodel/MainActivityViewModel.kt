@@ -28,7 +28,7 @@ class MainActivityViewModel: ViewModel() {
         }
     }
 
-    fun defineDefaultNurses(){
+    fun signUpNurses(){
         viewModelScope.launch {
             repo.signUpNurses()
         }

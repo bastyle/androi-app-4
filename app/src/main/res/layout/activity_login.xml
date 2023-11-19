@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/appLogo"
@@ -12,23 +10,33 @@
         android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:layout_centerInParent="true"/>
-
-    <TextView
-        android:id="@+id/mainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome To Centennial Medical Centre"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/appLogo"
         />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:layout_marginTop="260dp"
+        />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:layout_below="@id/usernameEditText"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:layout_below="@id/mainText"
+        android:layout_below="@id/passwordEditText"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

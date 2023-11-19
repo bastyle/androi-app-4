@@ -11,5 +11,5 @@ data class NurseEntity (
     @ColumnInfo("firstName") val firstName: String,
     @ColumnInfo("lastName") val lastName: String,
     @ColumnInfo("department") val department: String,
-    @ColumnInfo("password") val imageUrl: String
+    @ColumnInfo("password") val password: String
 )

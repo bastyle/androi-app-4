@@ -41,9 +41,13 @@ class MedicalRepo(private val database: MedicalDatabase) {
     }
 
     suspend fun defineNurses(){
-        var nurses= ArrayList<NurseEntity>()
-        nurses.add(NurseEntity(id = 1, firstName = "nurse 1", lastName = "perez", department = "dep 1", password = "123" ))
-        database.nurseDao().upsertAll(nurses)
+        return withContext(Dispatchers.IO) {
+            Log.e("Repo","defineNurses")
+            var nurses= ArrayList<NurseEntity>()
+            nurses.add(NurseEntity(id = 1, firstName = "nurse 1", lastName = "perez", department = "dep 1", password = "123" ))
+            database.nurseDao().upsertAll(nurses)
+        }
+
     }
 
 

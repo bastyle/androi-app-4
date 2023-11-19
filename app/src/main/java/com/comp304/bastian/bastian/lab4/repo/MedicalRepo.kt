@@ -5,28 +5,9 @@ import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.database.NurseEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.net.UnknownHostException
 
 class MedicalRepo(private val database: MedicalDatabase) {
 
-   // private var defaultNurses:
-
-    /*suspend fun getNurses() : List<NurseEntity>? {
-        return withContext(Dispatchers.IO) {
-            try {
-                /*val service = ProfileService.service
-                val data = service.getProfiles()
-                database.nurseDao().upsertAll(data.users.toUserEntityList())
-                data.toProfileList()*/
-                return@withContext null
-            } catch (ex: UnknownHostException) {
-                return@withContext null
-            } catch (ex: Exception) {
-                Log.e("Repo", ex.message.toString())
-                return@withContext null
-            }
-        }
-    }*/
 
     suspend fun getUserByFirstName(firstName: String) : List<NurseEntity> {
         return withContext(Dispatchers.IO) {
@@ -40,14 +21,23 @@ class MedicalRepo(private val database: MedicalDatabase) {
         }
     }
 
-    suspend fun defineNurses(){
+    suspend fun signUpNurses(){
         return withContext(Dispatchers.IO) {
             Log.e("Repo","defineNurses")
-            var nurses= ArrayList<NurseEntity>()
-            nurses.add(NurseEntity(id = 1, firstName = "nurse 1", lastName = "perez", department = "dep 1", password = "123" ))
-            database.nurseDao().upsertAll(nurses)
+            val nurse = database.nurseDao().getNurseById(1)
+            if(nurse==null){
+                var nurses= ArrayList<NurseEntity>()
+                nurses.add(NurseEntity(id = 1, firstName = "Mary", lastName = "Perez", department = "Obstetrics", password = "123" ))
+                nurses.add(NurseEntity(id = 2, firstName = "Emily", lastName = "Rodriguez", department = "Pediatrics", password = "123" ))
+                nurses.add(NurseEntity(id = 3, firstName = "Michale", lastName = "Tapia", department = "Emergency Room", password = "123" ))
+                nurses.add(NurseEntity(id = 4, firstName = "Catherine", lastName = "Williams", department = "Cardiology", password = "123" ))
+                nurses.add(NurseEntity(id = 5, firstName = "Elena", lastName = "Petrov", department = "Obstetrics", password = "123" ))
+                database.nurseDao().upsertAll(nurses)
+                //database.nurseDao().insert(NurseEntity(id = 1, firstName = "Mary", lastName = "Perez", department = "dep 1", password = "123" ))
+            }else{
+                Log.e("Repo","nurses already exist.")
+            }
         }
-
     }
 
 

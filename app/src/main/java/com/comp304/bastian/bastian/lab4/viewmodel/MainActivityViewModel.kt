@@ -30,7 +30,7 @@ class MainActivityViewModel: ViewModel() {
 
     fun defineDefaultNurses(){
         viewModelScope.launch {
-            repo.defineNurses()
+            repo.signUpNurses()
         }
     }
 

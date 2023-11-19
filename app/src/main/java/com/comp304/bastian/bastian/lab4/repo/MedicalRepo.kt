@@ -16,6 +16,7 @@ class MedicalRepo(private val database: MedicalDatabase) {
     }
 
     suspend fun getAllNurses() : List<NurseEntity> {
+        Log.e("Repo","getAllNurses")
         return withContext(Dispatchers.IO) {
             database.nurseDao().getAllNurses()
         }

@@ -28,9 +28,9 @@ interface NurseDao {
     fun getAllNurses2(): Flow<List<NurseEntity>>
 
     @Query(
-        "SELECT * FROM nurses WHERE nurseId = :id"
+        "SELECT * FROM nurses WHERE nurseId = :id AND password= :password"
     )
-    fun getUserById(id: Int): NurseEntity
+    fun getNurseByIdPass(id: String, password:String): NurseEntity
 
     @Query(
         """
@@ -46,7 +46,13 @@ interface NurseDao {
             WHERE nurseId = :nurseId
         """
     )
-    fun getNurseById(nurseId: Int): NurseEntity
+    fun getNurseById(nurseId: String): NurseEntity
+    @Query(
+        """
+            SELECT count(*) FROM nurses            
+        """
+    )
+    fun countNurses():Int
 
     @Delete
     fun deleteUser(user: NurseEntity)

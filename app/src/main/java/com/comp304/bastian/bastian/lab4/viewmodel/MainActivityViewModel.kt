@@ -1,5 +1,6 @@
 package com.comp304.bastian.bastian.lab4.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,8 +21,11 @@ class MainActivityViewModel: ViewModel() {
     private val _nurseStateFlow = MutableStateFlow(emptyList<NurseEntity>())
     val nurseStateFlow: StateFlow<List<NurseEntity>> = _nurseStateFlow.asStateFlow()
 
-    private val _userLiveData = MutableLiveData<List<NurseEntity>>()
-    val userLiveData: LiveData<List<NurseEntity>> = _userLiveData
+    private val _nurseLiveData = MutableLiveData<List<NurseEntity>>()
+    val nurseLiveData: LiveData<List<NurseEntity>> = _nurseLiveData
+
+    private val _navigateToHome = MutableLiveData<Boolean>()
+    val navigateToHome: LiveData<Boolean> get() = _navigateToHome
 
     fun getAllNurses() {
         viewModelScope.launch {
@@ -38,6 +42,18 @@ class MainActivityViewModel: ViewModel() {
         viewModelScope.launch {
             repo.signUpNurses()
         }
+    }
+
+    fun login(username: String, password: String) {
+        viewModelScope.launch {
+            //Log.e()
+            val user = repo.getNurseByIdPass(username, password)
+            _navigateToHome.value = user != null
+        }
+    }
+
+    fun onNavigationHandled() {
+        _navigateToHome.value = false
     }
 
     fun initDatabase(medicalDatabase: MedicalDatabase) {

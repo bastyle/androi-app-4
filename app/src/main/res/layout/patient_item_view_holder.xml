@@ -1,55 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="208dp"
+    android:layout_height="210dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/patient_image_view"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="1dp"
-        android:layout_width="160dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="140dp"
         tools:src="@tools:sample/avatars"
         android:layout_height="match_parent"/>
 
+
+
     <TextView
         android:id="@+id/patient_name_text_view"
-        android:layout_margin="11dp"
-        android:padding="16dp"
-        app:layout_constraintStart_toEndOf="@id/patient_image_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/patient_image_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        tools:text="Patient One"
         android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Patient One"/>
+        app:layout_constraintStart_toEndOf="@id/patient_image_view"
+        app:layout_constraintTop_toTopOf="@id/patient_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        />
 
     <TextView
         android:id="@+id/patient_id_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="ID 1"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@id/patient_name_text_view"
         app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="1dp"
-        android:padding="16dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        tools:text="ID 1"/>
+        android:layout_margin="0dp"
+        />
 
     <TextView
         android:id="@+id/patient_room_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Room 1"
+        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/patient_id_text_view"
         app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="1dp"
-        android:padding="16dp"
+        android:layout_margin="0dp"
+        />
+
+    <Button
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        tools:text="Room 1"/>
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/patient_room_text_view"
+        app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Go to Tests"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

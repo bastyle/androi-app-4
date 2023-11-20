@@ -45,6 +45,17 @@ class LoginActivity() : AppCompatActivity() {
                 // Ensure this activity is finished to prevent going back to it from HomeActivity
                 finish()
                 viewModel.onNavigationHandled()
+            }else{
+                //ValidationUtils.showToast(this, "Invalid username or password")
+            }
+        }
+
+        viewModel.loginMessage.observe(this) { errorMessage ->
+            if (!errorMessage.isNullOrBlank()) {
+                // Display an error message to the user
+                ValidationUtils.showToast(this, errorMessage)
+                // Reset the error message state in the ViewModel
+                viewModel.onNavigationHandled()
             }
         }
 
@@ -58,7 +69,7 @@ class LoginActivity() : AppCompatActivity() {
 
             } else {
                 // Show an error message using the utility class
-                ValidationUtils.showToast(this, "Invalid username or password")
+                //ValidationUtils.showToast(this, "Invalid username or password")
             }
         }
 

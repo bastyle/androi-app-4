@@ -27,6 +27,9 @@ class MainActivityViewModel: ViewModel() {
     private val _navigateToHome = MutableLiveData<Boolean>()
     val navigateToHome: LiveData<Boolean> get() = _navigateToHome
 
+    private val _loginMessage = MutableLiveData<String?>()
+    val loginMessage : MutableLiveData<String?> get()= _loginMessage
+
     fun getAllNurses() {
         viewModelScope.launch {
             val nursesList = repo.getAllNurses()
@@ -48,12 +51,19 @@ class MainActivityViewModel: ViewModel() {
         viewModelScope.launch {
             //Log.e()
             val user = repo.getNurseByIdPass(username, password)
-            _navigateToHome.value = user != null
+            if(user!==null){
+                _navigateToHome.value = true
+            }else{
+                _navigateToHome.value = false
+                _loginMessage.value="Invalid username or password"
+            }
+            //_navigateToHome.value = user != null
         }
     }
 
     fun onNavigationHandled() {
         _navigateToHome.value = false
+        _loginMessage.value=null
     }
 
     fun initDatabase(medicalDatabase: MedicalDatabase) {

@@ -55,11 +55,11 @@ class MedicalRepo(private val database: MedicalDatabase) {
             val counter = database.patientDao().count()
             if(counter==null || counter ==0){
                 var patients= ArrayList<PatientEntity>()
-                patients.add(PatientEntity(firstName = "Mary", lastName = "Perez", nurseId = "m.perez", room = "1" ))
-                patients.add(PatientEntity(firstName = "Emily", lastName = "Rodriguez", nurseId = "e.rodriguez", room = "2" ))
-                patients.add(PatientEntity(firstName = "Michale", lastName = "Tapia", nurseId = "m.tapia", room = "3" ))
-                patients.add(PatientEntity(firstName = "Catherine", lastName = "Williams", nurseId = "e.petrov", room = "4" ))
-                patients.add(PatientEntity(firstName = "Elena", lastName = "Petrov", nurseId = "e.petrov", room = "5" ))
+                patients.add(PatientEntity(firstName = "Luciano", lastName = "Tapia", nurseId = "m.perez", room = "1110" ))
+                patients.add(PatientEntity(firstName = "Emily", lastName = "Unzueta", nurseId = "e.rodriguez", room = "2508" ))
+                patients.add(PatientEntity(firstName = "Natalia", lastName = "Ramirez", nurseId = "m.tapia", room = "1322" ))
+                patients.add(PatientEntity(firstName = "Karina", lastName = "Ceveda", nurseId = "e.petrov", room = "1444" ))
+                patients.add(PatientEntity(firstName = "Manuel", lastName = "Tijoux", nurseId = "e.petrov", room = "2569" ))
                 database.patientDao().upsertAll(patients)
             }else{
                 Log.e("Repo","patients already exist.")

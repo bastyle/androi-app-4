@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityHomeBinding
-import com.comp304.bastian.bastian.lab4.databinding.ActivityLoginBinding
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
 

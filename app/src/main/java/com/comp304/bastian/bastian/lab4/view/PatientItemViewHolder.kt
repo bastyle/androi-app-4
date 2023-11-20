@@ -12,7 +12,7 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding): 
 
     private var idPatient = String()
     companion object{
-        const val TAG="HouseCheckoutViewHolder"
+        const val TAG="PatientItemViewHolder"
     }
 
     fun bind(item: PatientEntity, ctx: Context) {
@@ -22,11 +22,10 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding): 
         binding.patientNameTextView.text="Patient: "+item.firstName+" "+item.lastName
         binding.patientRoomTextView.text="Room: "+item.room
         binding.patientImageView.setImageResource(R.drawable.patient)
-
-
-
+        binding.patientNurseTextView.text="Nurse Assigned: "+item.nurseId
         binding.testsButton.setOnClickListener {
-            Log.e("Holder","idPatient: "+idPatient)
+            Log.e(TAG,"idPatient: "+idPatient)
+            // go to test activity
         }
     }
 }

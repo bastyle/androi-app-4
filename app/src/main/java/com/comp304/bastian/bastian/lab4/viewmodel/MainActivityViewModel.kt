@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.database.NurseEntity
+import com.comp304.bastian.bastian.lab4.database.PatientEntity
 import com.comp304.bastian.bastian.lab4.repo.MedicalRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +21,9 @@ class MainActivityViewModel: ViewModel() {
 
     private val _nurseStateFlow = MutableStateFlow(emptyList<NurseEntity>())
     val nurseStateFlow: StateFlow<List<NurseEntity>> = _nurseStateFlow.asStateFlow()
+
+    private val _patientStateFlow = MutableStateFlow(emptyList<PatientEntity>())
+    val patientStateFlow: StateFlow<List<PatientEntity>> = _patientStateFlow.asStateFlow()
 
     private val _nurseLiveData = MutableLiveData<List<NurseEntity>>()
     val nurseLiveData: LiveData<List<NurseEntity>> = _nurseLiveData
@@ -38,6 +42,23 @@ class MainActivityViewModel: ViewModel() {
                     nursesList
                 }
             }
+        }
+    }
+
+    fun getAllPatients() {
+        viewModelScope.launch {
+            val patientsList = repo.getAllPatients()
+            if (patientsList != null) {
+                _patientStateFlow.update {
+                    patientsList
+                }
+            }
+        }
+    }
+
+    fun createDefaultPatients(){
+        viewModelScope.launch {
+            repo.createDefaultPatients()
         }
     }
 
@@ -69,6 +90,8 @@ class MainActivityViewModel: ViewModel() {
     fun initDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = MedicalRepo(database)
+        signUpNurses()
+        createDefaultPatients()
     }
 
 }

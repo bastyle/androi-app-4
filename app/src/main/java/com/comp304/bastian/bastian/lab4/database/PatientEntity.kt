@@ -10,6 +10,6 @@ data class PatientEntity (
     @ColumnInfo("patientId") val id: Int = 0,
     @ColumnInfo("firstName") val firstName: String,
     @ColumnInfo("lastName") val lastName: String,
-    @ColumnInfo("nurseId") val nurseId: Int = 0,
+    @ColumnInfo("nurseId") val nurseId: String,
     @ColumnInfo("room") val room: String,
 )

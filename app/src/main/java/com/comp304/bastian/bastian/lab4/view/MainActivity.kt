@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
         viewModel.initDatabase(database)
-        viewModel.signUpNurses()
+        //viewModel.setupDataBase()
+        //viewModel.signUpNurses()
 
         binding.loginButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)

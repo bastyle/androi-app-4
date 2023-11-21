@@ -10,9 +10,9 @@ import kotlinx.coroutines.withContext
 class MedicalRepo(private val database: MedicalDatabase) {
 
 
-    suspend fun getNurseByFirstName(firstName: String) : List<NurseEntity> {
+    suspend fun getNurseById(nurseId: String) : NurseEntity {
         return withContext(Dispatchers.IO) {
-            database.nurseDao().getNurseByFirstName(firstName)
+            database.nurseDao().getNurseById(nurseId)
         }
     }
 

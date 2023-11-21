@@ -26,7 +26,8 @@ class LoginActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
+        //database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
+        database = MedicalDatabase.getInstance(baseContext)
         viewModel.initDatabase(database)
         // Implement your login logic here
         viewModel.getAllNurses()
@@ -50,7 +51,7 @@ class LoginActivity() : AppCompatActivity() {
                 //startActivity(intent)
                 //finish()
                 viewModel.onNavigationHandled()
-                GlobalUtil.login(baseContext, this)
+                GlobalUtil.login(baseContext, this, binding.usernameEditText.text.toString())
             }else{
                 //ValidationUtils.showToast(this, "Invalid username or password")
             }

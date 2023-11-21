@@ -10,6 +10,7 @@ object GlobalUtil {
 
     private const val TAG= "GlobalUtil"
     private const val MY_PREFS="MyPrefs"
+    public const val NURSE_ID_KEY="NurseId"
 
     fun addLoginStatus(context:Context, isLoggedIn:Boolean){
         val sharedPreferences = context.getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE)
@@ -30,10 +31,10 @@ object GlobalUtil {
         //context.startActivity(intent)
     }
 
-    fun login(context:Context, activity: AppCompatActivity?){
+    fun login(context:Context, activity: AppCompatActivity?, userName: String){
         Log.d(TAG, "Login...")
         val sharedPreferences = context.getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putBoolean("isLoggedIn", true).commit()
+        sharedPreferences.edit().putBoolean("isLoggedIn", true).putString(NURSE_ID_KEY,userName).commit()
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
         Log.d(TAG, "login isLoggedIn: $isLoggedIn")
         goToMainActivity(context, activity)
@@ -47,5 +48,10 @@ object GlobalUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
         activity?.finish()
+    }
+
+    fun getSharedPrefStr(context:Context, key:String): String? {
+        val sharedPreferences = context.getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE)
+        return sharedPreferences.getString(key,"Anonymous")
     }
 }

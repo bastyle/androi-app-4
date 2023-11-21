@@ -5,22 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [NurseEntity::class, PatientEntity::class,TestEntity::class], version = 3)
-abstract class MedicalDatabase:RoomDatabase() {
+@Database(entities = [NurseEntity::class, PatientEntity::class,TestEntity::class], version = 1)
+abstract class NurseSystemDB:RoomDatabase() {
     abstract fun nurseDao(): NurseDao
     abstract fun patientDao(): PatientDao
 
     companion object {
-        private var instance: MedicalDatabase? = null
+        private var instance: NurseSystemDB? = null
 
-        fun getInstance(context: Context): MedicalDatabase {
+        fun getInstance(context: Context): NurseSystemDB {
             if (instance == null) {
-                synchronized(MedicalDatabase::class) {
+                synchronized(NurseSystemDB::class) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        MedicalDatabase::class.java,
+                        NurseSystemDB::class.java,
                         "NurseSystemDB"
-                    ).fallbackToDestructiveMigration().build()
+                    ).build()
                 }
             }
             return instance!!

@@ -85,4 +85,10 @@ class HomeActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("Home","onRestart..........")
+        viewModel.getAllPatients()
+    }
 }

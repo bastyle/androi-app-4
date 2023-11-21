@@ -3,6 +3,7 @@ package com.comp304.bastian.bastian.lab4.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
+import com.comp304.bastian.bastian.lab4.database.PatientEntity
 import com.comp304.bastian.bastian.lab4.repo.MedicalRepo
 import com.comp304.bastian.bastian.lab4.repo.PatientRepo
 import kotlinx.coroutines.launch
@@ -19,8 +20,16 @@ class AddPatientViewModel: ViewModel() {
         }
     }
 
+    fun saveNewPatient(patient:PatientEntity){
+        viewModelScope.launch {
+            repo.saveNewPatient(patient)
+        }
+    }
+
     fun setDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = PatientRepo(database)
     }
+
+
 }

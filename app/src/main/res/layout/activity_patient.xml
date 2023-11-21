@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"/>
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextFirstName"
+        android:layout_marginTop="8dp"
+        android:hint="Last Name"/>
+
+    <EditText
+        android:id="@+id/editTextNurseId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextLastName"
+        android:layout_marginTop="8dp"
+        android:hint="Nurse ID"/>
+
+    <EditText
+        android:id="@+id/editTextRoom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNurseId"
+        android:layout_marginTop="8dp"
+        android:hint="Room"/>
+
+    <Button
+        android:id="@+id/buttonSavePatient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextRoom"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Save Patient"/>
+
+</RelativeLayout>

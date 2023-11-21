@@ -5,10 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.room.Room
+import com.comp304.bastian.bastian.lab4.R
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityMainBinding
+import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -46,4 +50,6 @@ class MainActivity : AppCompatActivity() {
         super.onRestart()
         Log.d("","restart...")
     }
+
+
 }

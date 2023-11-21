@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +24,7 @@ class AddPatientActivity():AppCompatActivity() {
 
     private lateinit var nurseList: List<String>
     private lateinit var selectedNurseId: String
+    private lateinit var nursedIdsadapter: ArrayAdapter<String>
 
     companion object{
         const val TAG ="AddPatientActivity"
@@ -35,14 +37,16 @@ class AddPatientActivity():AppCompatActivity() {
         setContentView(binding.root)
         viewModel.setDatabase(MedicalDatabase.getInstance(baseContext))
 
+
         lifecycleScope.launch {
             viewModel.nursesIdStateFlow.collect {
                 //adapter.updateList(it)
                 nurseList = it
+                loadNurseIds()
             }
         }
 
-        loadNurseIds()
+
         binding.buttonSavePatient.setOnClickListener {
             Log.d(TAG,"save...")
             savePatient()
@@ -56,16 +60,19 @@ class AddPatientActivity():AppCompatActivity() {
         //nurseList.clear()
         //nurseList.addAll()
 
-        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, nurseList)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerNurseId.adapter = adapter
+
+        //val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, nurseList)
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        //binding.spinnerNurseId.adapter = adapter
+        nursedIdsadapter = ArrayAdapter(this, R.layout.simple_spinner_item, nurseList)
+        nursedIdsadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerNurseId.adapter = nursedIdsadapter
 
         // Set a listener to capture the selected nurse ID
         binding.spinnerNurseId.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
                 selectedNurseId = nurseList[position]
             }
-
             override fun onNothingSelected(parentView: AdapterView<*>?) {
                 // Do nothing here
             }
@@ -94,8 +101,9 @@ class AddPatientActivity():AppCompatActivity() {
                 room = room
             )
             viewModel.saveNewPatient(newPatient)
-
+            Toast.makeText(this, "Patient saved successfully!", Toast.LENGTH_SHORT).show()
             // Optionally, navigate to another activity or perform other actions
+            finish()
         }
     }
 

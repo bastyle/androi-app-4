@@ -1,5 +1,6 @@
 package com.comp304.bastian.bastian.lab4.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -70,6 +71,11 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_logout -> {
                 GlobalUtil.logout(baseContext,this)
+                return true
+            }
+            R.id.addPatientButton->{
+                val intent = Intent(this, AddPatientActivity::class.java)
+                startActivity(intent)
                 return true
             }
             // Add other cases if needed

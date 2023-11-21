@@ -12,6 +12,7 @@ class MedicalRepo(private val database: MedicalDatabase) {
 
     suspend fun getNurseById(nurseId: String) : NurseEntity {
         return withContext(Dispatchers.IO) {
+            Log.e("Repo","getNurseById "+nurseId)
             database.nurseDao().getNurseById(nurseId)
         }
     }

@@ -27,7 +27,7 @@ class AddPatientActivity():AppCompatActivity() {
         val username = GlobalUtil.getSharedPrefStr(this,GlobalUtil.NURSE_ID_KEY) as String
         Log.d(TAG, "nurseId: "+username)
         if (username != null) {
-            viewModel.getNurseById(username)
+            Log.d(TAG, "nurseId database: "+viewModel.getNurseById(username))
             binding.editTextNurseId.setText(username)
         }
 

@@ -39,7 +39,8 @@ class HomeActivity : AppCompatActivity() {
         viewModel.getAllPatients()
 
         adapter = PatientsActivityViewAdapter(baseContext)
-        binding.textNurseId.text=GlobalUtil.getSharedPrefStr(this,GlobalUtil.NURSE_ID_KEY)
+        binding.textNurseId.text="Nurse: "+ (GlobalUtil.getSharedPrefStr(this,GlobalUtil.NURSE_ID_KEY)
+            ?.uppercase() ?: "")
         binding.recyclerView.adapter=this.adapter
         binding.recyclerView.layoutManager =
             LinearLayoutManager(this,

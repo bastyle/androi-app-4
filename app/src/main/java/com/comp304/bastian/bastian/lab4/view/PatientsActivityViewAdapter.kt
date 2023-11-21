@@ -14,7 +14,7 @@ class PatientsActivityViewAdapter (private val context: Context): RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientItemViewHolder {
         val binding = PatientItemViewHolderBinding.inflate(LayoutInflater.from(parent.context),parent, false)
-        return PatientItemViewHolder(binding)
+        return PatientItemViewHolder(binding, context)
     }
 
     override fun onBindViewHolder(holder: PatientItemViewHolder, position: Int) {

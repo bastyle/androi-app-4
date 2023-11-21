@@ -1,8 +1,10 @@
 package com.comp304.bastian.bastian.lab4.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.room.Room
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
@@ -17,17 +19,31 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        Log.d("","onCreate...")
 
         database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
         viewModel.initDatabase(database)
-        //viewModel.setupDataBase()
-        //viewModel.signUpNurses()
 
-        binding.loginButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn")
+        if(isLoggedIn){
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
+        }else{
+            setContentView(binding.root)
+            binding.loginButton.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
 
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("","restart...")
     }
 }

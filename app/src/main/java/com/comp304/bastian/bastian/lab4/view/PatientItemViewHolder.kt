@@ -2,13 +2,13 @@ package com.comp304.bastian.bastian.lab4.view
 
 import android.content.Context
 import android.util.Log
-import android.widget.RadioButton
 import androidx.recyclerview.widget.RecyclerView
 import com.comp304.bastian.bastian.lab4.R
 import com.comp304.bastian.bastian.lab4.database.PatientEntity
 import com.comp304.bastian.bastian.lab4.databinding.PatientItemViewHolderBinding
+import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 
-class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding): RecyclerView.ViewHolder(binding.root) {
+class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding, private val context: Context): RecyclerView.ViewHolder(binding.root) {
 
     private var idPatient = String()
     companion object{
@@ -26,6 +26,10 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding): 
         binding.testsButton.setOnClickListener {
             Log.e(TAG,"idPatient: "+idPatient)
             // go to test activity
+            Log.e(TAG,"logout:::::::: ")
+            //SharedPreferencesUtil.addLoginStatus(context,false)
+            GlobalUtil.logout(context, null)
+
         }
     }
 }

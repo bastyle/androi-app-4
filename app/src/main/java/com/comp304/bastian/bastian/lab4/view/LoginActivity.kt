@@ -1,5 +1,6 @@
 package com.comp304.bastian.bastian.lab4.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.room.Room
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.database.NurseEntity
 import com.comp304.bastian.bastian.lab4.databinding.ActivityLoginBinding
+import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.util.ValidationUtils
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
@@ -40,11 +42,15 @@ class LoginActivity() : AppCompatActivity() {
 
         viewModel.navigateToHome.observe(this) { shouldNavigate ->
             if (shouldNavigate) {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                // Ensure this activity is finished to prevent going back to it from HomeActivity
-                finish()
+                //val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                //sharedPreferences.edit().putBoolean("isLoggedIn", true).commit()
+                //val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
+                //Log.d("SharedPreferences aaa", "isLoggedIn: $isLoggedIn")
+                //val intent = Intent(this, MainActivity::class.java)
+                //startActivity(intent)
+                //finish()
                 viewModel.onNavigationHandled()
+                GlobalUtil.login(baseContext, this)
             }else{
                 //ValidationUtils.showToast(this, "Invalid username or password")
             }

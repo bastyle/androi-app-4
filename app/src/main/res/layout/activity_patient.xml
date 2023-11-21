@@ -17,19 +17,28 @@
         android:layout_marginTop="8dp"
         android:hint="Last Name"/>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/editTextNurseId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextLastName"
         android:layout_marginTop="8dp"
-        android:hint="Nurse ID"/>
+        android:hint="Nurse ID"/>-->
+
+    <Spinner
+        android:id="@+id/spinnerNurseId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextLastName"
+        android:layout_marginTop="8dp"
+        android:hint="Select Nurse ID" />
+
 
     <EditText
         android:id="@+id/editTextRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNurseId"
+        android:layout_below="@id/spinnerNurseId"
         android:layout_marginTop="8dp"
         android:hint="Room"/>
 

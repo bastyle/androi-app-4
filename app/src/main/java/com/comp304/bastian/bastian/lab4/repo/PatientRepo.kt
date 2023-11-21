@@ -24,4 +24,11 @@ class PatientRepo(private val database: MedicalDatabase) {
         }
     }
 
+    suspend fun getAllNurseIds() : List<String> {
+        Log.e("PatientRepo","getAllNurseIds")
+        return withContext(Dispatchers.IO) {
+            database.nurseDao().getAllNurseIds()
+        }
+    }
+
 }

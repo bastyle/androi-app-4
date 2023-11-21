@@ -23,6 +23,12 @@ interface NurseDao {
         """
     )
     fun getAllNurses(): List<NurseEntity>
+    @Query(
+        """
+            SELECT nurseId FROM nurses ORDER BY nurseId ASC
+         """
+    )
+    fun getAllNurseIds(): List<String>
 
     @Query("SELECT * FROM nurses")
     fun getAllNurses2(): Flow<List<NurseEntity>>

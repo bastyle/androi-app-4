@@ -14,6 +14,7 @@ import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.database.PatientEntity
 import com.comp304.bastian.bastian.lab4.databinding.ActivityPatientBinding
 import com.comp304.bastian.bastian.lab4.util.GlobalUtil
+import com.comp304.bastian.bastian.lab4.util.ValidationUtils
 import com.comp304.bastian.bastian.lab4.viewmodel.AddPatientViewModel
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
@@ -28,8 +29,7 @@ class AddPatientActivity():AppCompatActivity() {
 
     companion object{
         const val TAG ="AddPatientActivity"
-        const val MIN_LENGTH = 5
-        const val MAX_LENGTH = 12
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -115,8 +115,11 @@ class AddPatientActivity():AppCompatActivity() {
             // Display an error message or handle validation failure
             Toast.makeText(this, "Please complete all fields!", Toast.LENGTH_SHORT).show()
             return false
-        }else if( (firstName.length<MIN_LENGTH || firstName.length>MAX_LENGTH) || (lastName.length<MIN_LENGTH || lastName.length>MAX_LENGTH) ){
-            Toast.makeText(this, "Names must be at least $MIN_LENGTH characters and maximum $MAX_LENGTH.", Toast.LENGTH_SHORT).show()
+        }else if( (firstName.length<ValidationUtils.MIN_LENGTH
+                    || firstName.length> ValidationUtils.MAX_LENGTH)
+                    || (lastName.length<ValidationUtils.MIN_LENGTH
+                    || lastName.length>ValidationUtils.MAX_LENGTH) ){
+            Toast.makeText(this, "Names must be at least $ValidationUtils.MIN_LENGTH characters and maximum $ValidationUtils.MAX_LENGTH.", Toast.LENGTH_SHORT).show()
             return false
         }else if(!firstName.matches(Regex("[a-zA-Z ]+")) || !lastName.matches(Regex("[a-zA-Z ]+"))){
             Toast.makeText(this, "Names only accept alphabetical characters.", Toast.LENGTH_SHORT).show()

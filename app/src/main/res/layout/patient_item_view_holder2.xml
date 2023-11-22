@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/patient_image_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                android:layout_width="140dp"
+                tools:src="@drawable/patient"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/patient_name_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Patient One"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/patient_image_view"
+                app:layout_constraintTop_toTopOf="@id/patient_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/patient_id_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="ID 1"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/patient_name_text_view"
+                app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="0dp"
+                />
+
+            <TextView
+                android:id="@+id/patient_room_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Room 1"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/patient_id_text_view"
+                app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="0dp"
+                />
+
+            <TextView
+                android:id="@+id/patient_nurse_text_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Nurse Assigned: Marta Perez"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/patient_room_text_view"
+                app:layout_constraintStart_toStartOf="@id/patient_name_text_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="0dp"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/patient_image_view"
+                app:layout_constraintTop_toBottomOf="@id/patient_nurse_text_view">
+
+                <Button
+                    android:id="@+id/editPatientInfo"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Edit"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/tests_button"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="+ Test"
+                    android:textSize="10dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

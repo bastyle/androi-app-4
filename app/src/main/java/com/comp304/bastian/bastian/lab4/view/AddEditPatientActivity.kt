@@ -100,12 +100,24 @@ class AddEditPatientActivity():AppCompatActivity() {
         val room = binding.editTextRoom.text.toString().trim()
 
         if (validateInputs(firstName, lastName, selectedNurseId, room)) {
-            val newPatient = PatientEntity(
-                firstName = firstName,
-                lastName = lastName,
-                nurseId = selectedNurseId,
-                room = room
-            )
+            var newPatient:PatientEntity
+            if(isEdition){
+                newPatient = PatientEntity(
+                    id= patientId,
+                    firstName = firstName,
+                    lastName = lastName,
+                    nurseId = selectedNurseId,
+                    room = room
+                )
+            }else{
+                newPatient = PatientEntity(
+                    firstName = firstName,
+                    lastName = lastName,
+                    nurseId = selectedNurseId,
+                    room = room
+                )
+            }
+
             viewModel.saveNewPatient(newPatient)
             Toast.makeText(this, "Patient saved successfully!", Toast.LENGTH_SHORT).show()
             // Optionally, navigate to another activity or perform other actions

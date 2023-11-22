@@ -55,6 +55,9 @@ class TestsActivity(): AppCompatActivity() {
             }
         }
 
+        binding.addTestButton.setOnClickListener {
+            //TODO add logic to add new test (new activity?) use activity_add_test.xml to create one
+        }
 
 
     }

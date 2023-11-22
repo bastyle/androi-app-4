@@ -12,7 +12,7 @@ interface PatientDao {
     fun upsertAll(userList: List<PatientEntity>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun save(patient: PatientEntity)
+    fun insert(patient: PatientEntity)
 
     @Query(
         """

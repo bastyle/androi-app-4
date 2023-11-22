@@ -20,7 +20,7 @@ class PatientRepo(private val database: MedicalDatabase) {
     suspend fun saveNewPatient(patient: PatientEntity) {
         return withContext(Dispatchers.IO) {
             Log.e("PatientRepo","saveNewPatient: "+patient.firstName)
-            database.patientDao().save(patient)
+            database.patientDao().insert(patient)
         }
     }
 

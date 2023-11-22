@@ -14,4 +14,6 @@ data class TestEntity (
     @ColumnInfo("BPL") val BPL: Float,
     @ColumnInfo("BPH") val BPH: Float,
     @ColumnInfo("temperature") val temperature: Float,
+    @ColumnInfo(name = "urine") val urine: String?,
+    @ColumnInfo(name = "xRay") val xRay: String?,
 )

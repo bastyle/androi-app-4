@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_height="160dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -80,6 +80,24 @@
                 android:text="Temperature:"
                 app:layout_constraintTop_toBottomOf="@+id/textViewBPH"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewUrine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Urine Results:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTemperature"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewXRay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="XRay Result:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBPH"
+                app:layout_constraintStart_toEndOf="@+id/textViewBPL"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

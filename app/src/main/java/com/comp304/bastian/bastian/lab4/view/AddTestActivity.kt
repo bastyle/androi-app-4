@@ -70,7 +70,9 @@ class AddTestActivity():AppCompatActivity() {
                 department = department,
                 BPL = bpl.toFloat(),
                 BPH = bph.toFloat(),
-                temperature = temperature.toFloat()
+                temperature = temperature.toFloat(),
+                urine = "",
+                xRay = ""
             )
             viewModel.saveNewTest(newTest)
             Toast.makeText(this, "Test added successfully!", Toast.LENGTH_LONG).show()

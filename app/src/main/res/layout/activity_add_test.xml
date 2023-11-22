@@ -122,9 +122,49 @@
             android:id="@+id/editTextTemperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:hint="Enter Temperature"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Urine Results:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextUrine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Urine Test Comment (optional)"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="XRay Results:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextXRay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="XRay Test Comment (optional)"/>
+    </LinearLayout>
+
+
 
     <Button
         android:id="@+id/buttonSaveTest"

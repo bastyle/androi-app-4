@@ -28,6 +28,8 @@ class TestsItemViewHolder(private val binding: TestItemViewHolderBinding, privat
         binding.textViewTemperature.text="Temperature: "+item.temperature
         binding.textViewPatientId.text="Patient ID: "+item.patientId
         binding.textViewDepartment.text="Department: "+item.department
+        binding.textViewUrine.text="Urine: "+item.urine
+        binding.textViewXRay.text="XRay: "+item.xRay
 
         /*binding..setOnClickListener {
             Log.e(TAG, "tests button: " + idPatient)

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityTestsBinding
@@ -44,6 +45,13 @@ class TestsActivity(): AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.testsIdStateFlow.collect {
                 adapter.updateList(it)
+            }
+        }
+        //database.patientDao().getPatientById(patientId = patientId.toInt())
+        //binding.patientInfo.text="Patient: "+database.patientDao().getPatientById(patientId = patientId.toInt()).firstName
+        lifecycleScope.launch {
+            viewModel.patient.observe(this@TestsActivity) { patient->
+                binding.patientInfo.text= "Patient: "+ patient.firstName+" "+ patient.lastName
             }
         }
 

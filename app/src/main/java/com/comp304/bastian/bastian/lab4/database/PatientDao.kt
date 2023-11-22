@@ -21,6 +21,12 @@ interface PatientDao {
     )
     fun getAllPatients(): List<PatientEntity>
 
+    @Query(
+        """
+            SELECT * FROM patients WHERE patientId=:patientId
+        """
+    )
+    fun getPatientById(patientId:Int): PatientEntity
 
     @Query(
         """

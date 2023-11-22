@@ -31,4 +31,11 @@ class PatientRepo(private val database: MedicalDatabase) {
         }
     }
 
+    suspend fun getPatientById(patientId:Int) : PatientEntity {
+        Log.e("PatientRepo","getPatientById $patientId")
+        return withContext(Dispatchers.IO) {
+            database.patientDao().getPatientById(patientId)
+        }
+    }
+
 }

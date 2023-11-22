@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">BastianBastias_COMP304Lab4</string>
-    <string name="welcome_title">Welcome To Centennial Medical Centre</string>
+    <string name="welcome_title">Welcome To The Independent Nurses Medical Centre</string>
     <string name="loginButtonText">Login</string>
     <string name="editPatientButtonText">Edit Patient</string>
     <string name="testButtonText">Tests</string>
+    <string name="addEditPatientButtonText">Save Patient</string>
+    <string name="saveTestButtonText">Save Test</string>
+    <string name="addNewTestButtonText">Add new Test</string>
 </resources>

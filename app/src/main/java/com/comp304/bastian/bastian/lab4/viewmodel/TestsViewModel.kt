@@ -8,6 +8,7 @@ import com.comp304.bastian.bastian.lab4.repo.TestsRepo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class TestsViewModel: ViewModel() {
@@ -20,7 +21,12 @@ class TestsViewModel: ViewModel() {
 
     fun getAllTestsByPatientId(id:Int){
         viewModelScope.launch {
-            repo.getAllTestsByPatientId(id)
+            val testsList = repo.getAllTestsByPatientId(id)
+            if (testsList != null) {
+                _testsStateFlow.update {
+                    testsList
+                }
+            }
         }
     }
 

@@ -1,6 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textViewTestId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Test ID:"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewPatientId"/>
+
+            <TextView
+                android:id="@+id/textViewPatientId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient ID:"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewTestId"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewNurseId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nurse ID:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTestId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewDepartment"/>
+
+            <TextView
+                android:id="@+id/textViewDepartment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Department:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPatientId"
+                app:layout_constraintStart_toEndOf="@+id/textViewNurseId"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewBPL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="BPL:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNurseId"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/textViewBPH"/>
+
+            <TextView
+                android:id="@+id/textViewBPH"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="BPH:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDepartment"
+                app:layout_constraintStart_toEndOf="@+id/textViewBPL"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/textViewTemperature"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Temperature:"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBPH"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

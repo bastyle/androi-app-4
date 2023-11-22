@@ -14,7 +14,7 @@ class TestsRepo(private val database: MedicalDatabase) {
 
     suspend fun getAllTestsByPatientId(nurseId: Int) : List<TestEntity> {
         return withContext(Dispatchers.IO) {
-            Log.e(TAG,"getNurseById "+nurseId)
+            Log.e(TAG,"getAllTestsByPatientId "+nurseId)
             database.testsDao().getAllTestsByPatientId(nurseId)
         }
     }

@@ -25,4 +25,8 @@ object ValidationUtils {
     fun isValidLength(input:String):Boolean{
         return (input.length in MIN_LENGTH..MAX_LENGTH)
     }
+
+    fun isAlphabetical(input:String):Boolean{
+        return input.matches(Regex("[a-zA-Z ]+"))
+    }
 }

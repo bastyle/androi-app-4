@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class TestsActivity(): AppCompatActivity() {
     private lateinit var binding: ActivityTestsBinding
     private lateinit var database: MedicalDatabase
-    private lateinit var patientId : String
+    private var patientId = String()
     private lateinit var patient : PatientEntity
     private val viewModel: TestsViewModel  by viewModels()
     private lateinit var adapter: TestsActivityViewAdapter
@@ -71,5 +71,11 @@ class TestsActivity(): AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG,"onRestart")
+        viewModel.getAllTestsByPatientId(patientId.toInt())
     }
 }

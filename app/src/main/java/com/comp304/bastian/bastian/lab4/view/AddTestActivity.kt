@@ -58,25 +58,22 @@ class AddTestActivity():AppCompatActivity() {
     }
 
     private fun saveTest() {
-        //val patientId = patientId as Int //binding.editTextPatientId.text.toString().trim().toInt()
-        val nurseId = selectedNurseId
         val department = binding.editTextDepartment.text.toString().trim()
         val bpl = binding.editTextBPL.text.toString().trim()
         val bph = binding.editTextBPH.text.toString().trim()
         val temperature = binding.editTextTemperature.text.toString().trim()
-
         // Validate inputs and save the test
         if (validateInputs(department, bpl, bph, temperature)) {
             val newTest = TestEntity(
                 patientId = patientId.toInt(),
-                nurseId = nurseId,
+                nurseId = selectedNurseId,
                 department = department,
                 BPL = bpl.toFloat(),
                 BPH = bph.toFloat(),
                 temperature = temperature.toFloat()
             )
             viewModel.saveNewTest(newTest)
-            Toast.makeText(this, "Test added successfully!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Test added successfully!", Toast.LENGTH_LONG).show()
             finish()
         }
     }
@@ -86,7 +83,7 @@ class AddTestActivity():AppCompatActivity() {
         if (department.isEmpty() || bpl.isEmpty() || bph.isEmpty() || temperature.isEmpty()) {
             Toast.makeText(this, "Please complete all fields!", Toast.LENGTH_SHORT).show()
             return false
-        }else if(!department.matches(Regex("[a-zA-Z ]+"))){
+        } else if(!ValidationUtils.isAlphabetical(department)){
             Toast.makeText(this, "Department only accept alphabetical characters.", Toast.LENGTH_SHORT).show()
             return false
         }else if( (!ValidationUtils.isValidLength(department)) ){

@@ -9,7 +9,7 @@ import com.comp304.bastian.bastian.lab4.databinding.TestItemViewHolderBinding
 
 class TestsActivityViewAdapter (private val context: Context): RecyclerView.Adapter<TestsItemViewHolder>() {
 
-    private val patientsList = ArrayList<TestEntity>()
+    private val testsList = ArrayList<TestEntity>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestsItemViewHolder {
@@ -18,11 +18,11 @@ class TestsActivityViewAdapter (private val context: Context): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: TestsItemViewHolder, position: Int) {
-        holder.bind(patientsList[position],context)
+        holder.bind(testsList[position],context)
     }
 
     override fun getItemCount(): Int {
-        return patientsList.size
+        return testsList.size
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -30,10 +30,10 @@ class TestsActivityViewAdapter (private val context: Context): RecyclerView.Adap
     }
 
     fun updateList(items:List<TestEntity>){
-        val size=patientsList.size
-        patientsList.clear()
+        val size=testsList.size
+        testsList.clear()
         notifyItemRangeRemoved(0,size)
-        patientsList.addAll(items)
+        testsList.addAll(items)
         notifyItemRangeInserted(0, items.size)
     }
 }

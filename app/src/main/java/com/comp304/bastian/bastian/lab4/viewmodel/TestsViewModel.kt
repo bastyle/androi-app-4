@@ -1,5 +1,6 @@
 package com.comp304.bastian.bastian.lab4.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
@@ -22,6 +23,7 @@ class TestsViewModel: ViewModel() {
     fun getAllTestsByPatientId(id:Int){
         viewModelScope.launch {
             val testsList = repo.getAllTestsByPatientId(id)
+            Log.d("TestsViewModel","getAllTestsByPatientId size: "+testsList.size)
             if (testsList != null) {
                 _testsStateFlow.update {
                     testsList
@@ -53,5 +55,6 @@ class TestsViewModel: ViewModel() {
         database = medicalDatabase
         repo = TestsRepo(database)
         addDefaultTests()
+        getAllTestsByPatientId(patientId)
     }
 }

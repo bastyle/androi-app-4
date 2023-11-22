@@ -34,7 +34,7 @@ class TestsActivity(): AppCompatActivity() {
 
         adapter = TestsActivityViewAdapter(baseContext)
 
-        viewModel.getAllTestsByPatientId(1)
+        //viewModel.getAllTestsByPatientId(1)
 
         binding.recyclerView.adapter=this.adapter
         binding.recyclerView.layoutManager =

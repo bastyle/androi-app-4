@@ -8,20 +8,25 @@ import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityTestsBinding
 import com.comp304.bastian.bastian.lab4.viewmodel.TestsViewModel
 
-class TestsActivity(private val patientId:Int): AppCompatActivity() {
+class TestsActivity(): AppCompatActivity() {
     private lateinit var binding: ActivityTestsBinding
     private lateinit var database: MedicalDatabase
+    private lateinit var patientId : String
     private val viewModel: TestsViewModel  by viewModels()
 
+    companion object{
+        public const val ID_PATIENT_KEY = "ID_PATIENT_KEY"
+        private const val TAG = "TestsActivity"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("Home", "oncreate..........")
+        Log.d(TAG, "oncreate..........")
         super.onCreate(savedInstanceState)
         binding = ActivityTestsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //
-        //database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
         database = MedicalDatabase.getInstance(baseContext)
-        viewModel.setDatabase(database, patientId)
+        patientId = intent.getStringExtra(ID_PATIENT_KEY).toString()
+        viewModel.setDatabase(database, patientId.toInt())
 
 
 

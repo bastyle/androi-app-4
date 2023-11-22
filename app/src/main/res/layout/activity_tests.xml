@@ -1,65 +1,48 @@
-<!-- activity_enter_tests.xml -->
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/cardview_shadow_end_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
-        android:id="@+id/editTextPatientId"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textTestId"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Patient ID"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:text="Patient XXX"
+        android:gravity="center_horizontal"
+        android:layout_margin="4dp"/>
 
-    <EditText
-        android:id="@+id/editTextNurseId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPatientId"
-        android:layout_marginTop="8dp"
-        android:hint="Nurse ID"/>
 
-    <EditText
-        android:id="@+id/editTextDepartment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNurseId"
-        android:layout_marginTop="8dp"
-        android:hint="Department"/>
 
-    <EditText
-        android:id="@+id/editTextBPL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextDepartment"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="BPL"/>
-
-    <EditText
-        android:id="@+id/editTextBPH"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextBPL"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="BPH"/>
-
-    <EditText
-        android:id="@+id/editTextTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextBPH"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="Temperature"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        app:layout_constraintTop_toBottomOf="@id/textTestId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addTestButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:listitem="@tools:sample/avatars"
+        android:layout_margin="1dp"/>
 
     <Button
-        android:id="@+id/buttonSaveTest"
+        android:id="@+id/addTestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTemperature"
-        android:layout_marginTop="16dp"
-        android:text="Save Test"/>
+        android:text="Add New Test"
+        app:layout_constraintTop_toBottomOf="@id/recycler_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="8dp"/>
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

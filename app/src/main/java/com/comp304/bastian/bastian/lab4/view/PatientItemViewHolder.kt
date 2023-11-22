@@ -1,6 +1,7 @@
 package com.comp304.bastian.bastian.lab4.view
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.comp304.bastian.bastian.lab4.R
@@ -23,13 +24,14 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding, p
         binding.patientRoomTextView.text="Room: "+item.room
         binding.patientImageView.setImageResource(R.drawable.patient)
         binding.patientNurseTextView.text="Nurse Assigned: "+item.nurseId
-        binding.testsButton.setOnClickListener {
-            Log.e(TAG,"idPatient: "+idPatient)
-            // go to test activity
-            Log.e(TAG,"logout:::::::: ")
-            //SharedPreferencesUtil.addLoginStatus(context,false)
-            GlobalUtil.logout(context, null)
 
+        binding.testsButton.setOnClickListener {
+            Log.e(TAG,"tests button: "+idPatient)
+
+            val intent = Intent(context, TestsActivity::class.java)
+            intent.putExtra(TestsActivity.ID_PATIENT_KEY, idPatient)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
         }
     }
 }

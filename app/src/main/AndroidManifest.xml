@@ -24,6 +24,7 @@
         <activity android:name=".view.LoginActivity"/>
         <activity android:name=".view.HomeActivity"/>
         <activity android:name=".view.AddPatientActivity"/>
+        <activity android:name=".view.TestsActivity"/>
     </application>
 
 </manifest>

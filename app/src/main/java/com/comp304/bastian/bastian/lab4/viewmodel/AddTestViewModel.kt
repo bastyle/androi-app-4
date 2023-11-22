@@ -17,25 +17,34 @@ import kotlinx.coroutines.launch
 class AddTestViewModel: ViewModel() {
     private lateinit var database: MedicalDatabase
     private lateinit var repo: TestsRepo
+    private lateinit var patientRepo: PatientRepo
 
     private val _nursesStateFlow = MutableStateFlow(emptyList<String>())
     val nursesIdStateFlow: StateFlow<List<String>> = _nursesStateFlow.asStateFlow()
 
-
-
-    
-
-    fun saveNewPatient(test: TestEntity){
+    fun saveNewTest(test: TestEntity){
         viewModelScope.launch {
             repo.saveNewTest(test)
+        }
+    }
+
+    fun getNurses() {
+        viewModelScope.launch {
+            val nurseIds = patientRepo.getAllNurseIds()
+            Log.e("AddTestViewModel","getNurses")
+            if (nurseIds != null) {
+                Log.e("AddTestViewModel","!= null")
+                _nursesStateFlow.update {
+                    nurseIds
+                }
+            }
         }
     }
 
     fun setDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = TestsRepo(database)
-
+        patientRepo = PatientRepo(database)
+        getNurses()
     }
-
-
 }

@@ -1,63 +1,137 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextPatientId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Patient ID"/>
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/editTextNurseId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPatientId"
-        android:layout_marginTop="8dp"
-        android:hint="Nurse ID"/>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Patient ID:"
+            android:layout_gravity="center_vertical"/>
 
-    <EditText
-        android:id="@+id/editTextDepartment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextNurseId"
-        android:layout_marginTop="8dp"
-        android:hint="Department"/>
+        <EditText
+            android:id="@+id/editTextPatientId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:hint="Enter Patient ID"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/editTextBPL"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextDepartment"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="BPL"/>
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/editTextBPH"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextBPL"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="BPH"/>
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Nurse ID:"
+            android:layout_gravity="center_vertical"/>
 
-    <EditText
-        android:id="@+id/editTextTemperature"
+        <!--<EditText
+            android:id="@+id/editTextNurseId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Nurse ID"/>-->
+
+        <Spinner
+            android:id="@+id/spinnerNurseId"
+            android:layout_width="match_parent"
+            android:tooltipText="Nurse"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextLastName"
+            android:layout_marginTop="8dp"
+            android:hint="Select Nurse ID" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextBPH"
-        android:layout_marginTop="8dp"
-        android:inputType="numberDecimal"
-        android:hint="Temperature"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Department:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Department"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="BPL:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextBPL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Enter BPL"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="BPH:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextBPH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Enter BPH"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Temperature:"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/editTextTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Enter Temperature"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonSaveTest"
+        android:layout_marginLeft="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTemperature"
         android:layout_marginTop="16dp"
         android:text="Save Test"/>
 
-</RelativeLayout>
+</LinearLayout>

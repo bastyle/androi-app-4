@@ -28,6 +28,8 @@ class AddPatientActivity():AppCompatActivity() {
 
     companion object{
         const val TAG ="AddPatientActivity"
+        const val MIN_LENGTH = 5
+        const val MAX_LENGTH = 12
     }
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -111,10 +113,19 @@ class AddPatientActivity():AppCompatActivity() {
         // Implement your validation logic here (e.g., check for empty fields, length, format, etc.)
         if (firstName.isEmpty() || lastName.isEmpty() || nurseId.isEmpty() || room.isEmpty()) {
             // Display an error message or handle validation failure
+            Toast.makeText(this, "Please complete all fields!", Toast.LENGTH_SHORT).show()
+            return false
+        }else if( (firstName.length<MIN_LENGTH || firstName.length>MAX_LENGTH) || (lastName.length<MIN_LENGTH || lastName.length>MAX_LENGTH) ){
+            Toast.makeText(this, "Names must be at least $MIN_LENGTH characters and maximum $MAX_LENGTH.", Toast.LENGTH_SHORT).show()
+            return false
+        }else if(!firstName.matches(Regex("[a-zA-Z ]+")) || !lastName.matches(Regex("[a-zA-Z ]+"))){
+            Toast.makeText(this, "Names only accept alphabetical characters.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        // Add more validation checks as needed
+
+
+
 
         return true
     }

@@ -7,6 +7,7 @@
         android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLength="12"
         android:hint="First Name"/>
 
     <EditText
@@ -15,7 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextFirstName"
         android:layout_marginTop="8dp"
-        android:hint="Last Name"/>
+        android:hint="Last Name"
+        android:maxLength="12"
+        android:inputType="textPersonName"
+        />
 
     <!--<EditText
         android:id="@+id/editTextNurseId"
@@ -40,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerNurseId"
         android:layout_marginTop="8dp"
+        android:inputType="number"
         android:hint="Room"/>
 
     <Button

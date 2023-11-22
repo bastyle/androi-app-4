@@ -91,7 +91,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Edit Patient"
+                    android:text="@string/editPatientButtonText"
                     android:textSize="10dp" />
 
                 <Button
@@ -99,7 +99,7 @@
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="Tests"
+                    android:text="@string/testButtonText"
                     android:textSize="10dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

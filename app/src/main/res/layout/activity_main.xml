@@ -18,7 +18,7 @@
         android:id="@+id/mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome To Centennial Medical Centre"
+        android:text="@string/welcome_title"
         android:layout_centerInParent="true"
         android:layout_below="@id/appLogo"
         />
@@ -27,7 +27,7 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/loginButtonText"
         android:layout_below="@id/mainText"
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"/>

@@ -121,10 +121,13 @@ class AddPatientActivity():AppCompatActivity() {
         }else if(!firstName.matches(Regex("[a-zA-Z ]+")) || !lastName.matches(Regex("[a-zA-Z ]+"))){
             Toast.makeText(this, "Names only accept alphabetical characters.", Toast.LENGTH_SHORT).show()
             return false
+        }else if(!room.matches(Regex("\\d{2,4}"))){
+            Toast.makeText(this, "Room must be a number between 10 and maximum 9999.", Toast.LENGTH_SHORT).show()
+            return false
+        }else if(!room.matches(Regex("-?\\d+(\\.\\d+)?"))){
+            Toast.makeText(this, "Room just accept Numbers.", Toast.LENGTH_SHORT).show()
+            return false
         }
-
-
-
 
 
         return true

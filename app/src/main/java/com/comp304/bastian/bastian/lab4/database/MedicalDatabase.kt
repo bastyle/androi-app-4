@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 abstract class MedicalDatabase:RoomDatabase() {
     abstract fun nurseDao(): NurseDao
     abstract fun patientDao(): PatientDao
+    abstract fun testsDao(): TestsDao
 
     companion object {
         private var instance: MedicalDatabase? = null

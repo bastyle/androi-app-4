@@ -1,0 +1,65 @@
+<!-- activity_enter_tests.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextPatientId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patient ID"/>
+
+    <EditText
+        android:id="@+id/editTextNurseId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPatientId"
+        android:layout_marginTop="8dp"
+        android:hint="Nurse ID"/>
+
+    <EditText
+        android:id="@+id/editTextDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNurseId"
+        android:layout_marginTop="8dp"
+        android:hint="Department"/>
+
+    <EditText
+        android:id="@+id/editTextBPL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextDepartment"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="BPL"/>
+
+    <EditText
+        android:id="@+id/editTextBPH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextBPL"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="BPH"/>
+
+    <EditText
+        android:id="@+id/editTextTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextBPH"
+        android:layout_marginTop="8dp"
+        android:inputType="numberDecimal"
+        android:hint="Temperature"/>
+
+    <Button
+        android:id="@+id/buttonSaveTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTemperature"
+        android:layout_marginTop="16dp"
+        android:text="Save Test"/>
+
+</RelativeLayout>

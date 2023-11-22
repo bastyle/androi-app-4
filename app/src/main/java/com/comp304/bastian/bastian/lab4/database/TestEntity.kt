@@ -9,7 +9,7 @@ data class TestEntity (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo("testId") val id: Int = 0,
     @ColumnInfo("patientId") val patientId: Int,
-    @ColumnInfo("nurseId") val nurseId:Int,
+    @ColumnInfo("nurseId") val nurseId:String,
     @ColumnInfo("department") val department: String,
     @ColumnInfo("BPL") val BPL: Float,
     @ColumnInfo("BPH") val BPH: Float,

@@ -16,16 +16,17 @@ import com.comp304.bastian.bastian.lab4.databinding.ActivityPatientBinding
 import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.util.ValidationUtils
 import com.comp304.bastian.bastian.lab4.viewmodel.AddPatientViewModel
-import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
 
-class AddPatientActivity():AppCompatActivity() {
+class AddEditPatientActivity():AppCompatActivity() {
     private lateinit var binding: ActivityPatientBinding
     private val viewModel: AddPatientViewModel by viewModels()
 
     private lateinit var nurseList: List<String>
     private lateinit var selectedNurseId: String
     private lateinit var nursedIdsadapter: ArrayAdapter<String>
+    private var isEdition=false
+    private var patientId = 0
 
     companion object{
         const val TAG ="AddPatientActivity"
@@ -37,9 +38,23 @@ class AddPatientActivity():AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPatientBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         viewModel.setDatabase(MedicalDatabase.getInstance(baseContext))
 
+        binding.buttonSavePatient.setOnClickListener {
+            Log.d(TAG,"save...")
+            savePatient()
+        }
 
+        isEdition = intent.getBooleanExtra(GlobalUtil.IS_EDITION,false)
+        if(isEdition){
+            patientId = intent.getIntExtra(GlobalUtil.ID_PATIENT_KEY,0)
+            binding.editTextFirstName.setText(intent.getStringExtra(GlobalUtil.PATIENT_FNAME_KEY))
+            binding.editTextLastName.setText(intent.getStringExtra(GlobalUtil.PATIENT_LNAME_KEY))
+            binding.editTextRoom.setText(intent.getStringExtra(GlobalUtil.ROOM_NAME_KEY))
+            selectedNurseId= intent.getStringExtra(GlobalUtil.NURSE_ID_KEY).toString()
+
+        }
         lifecycleScope.launch {
             viewModel.nursesIdStateFlow.collect {
                 //adapter.updateList(it)
@@ -47,29 +62,12 @@ class AddPatientActivity():AppCompatActivity() {
                 loadNurseIds()
             }
         }
-
-
-        binding.buttonSavePatient.setOnClickListener {
-            Log.d(TAG,"save...")
-            savePatient()
-        }
     }
 
     private fun loadNurseIds() {
-        // Replace this with the actual logic to load nurse IDs from the database
-        // For demonstration purposes, nurseList is populated with dummy data
-        //viewModel.getNurseIds()
-        //nurseList.clear()
-        //nurseList.addAll()
-
-
-        //val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, nurseList)
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //binding.spinnerNurseId.adapter = adapter
         nursedIdsadapter = ArrayAdapter(this, R.layout.simple_spinner_item, nurseList)
         nursedIdsadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerNurseId.adapter = nursedIdsadapter
-
         // Set a listener to capture the selected nurse ID
         binding.spinnerNurseId.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
@@ -79,12 +77,18 @@ class AddPatientActivity():AppCompatActivity() {
                 // Do nothing here
             }
         }
-        val username = GlobalUtil.getSharedPrefStr(this,GlobalUtil.NURSE_ID_KEY) as String
-        Log.d(TAG, "nurseId: "+username)
-        if (username != null) {
-            selectedNurseId = username
+        if(isEdition){
+            Log.d(TAG, "isEdition.")
             binding.spinnerNurseId.setSelection(nurseList.indexOf(selectedNurseId))
+        }else{
+            val username = GlobalUtil.getSharedPrefStr(this,GlobalUtil.NURSE_ID_KEY) as String
+            Log.d(TAG, "nurseId: "+username)
+            if (username != null) {
+                selectedNurseId = username
+                binding.spinnerNurseId.setSelection(nurseList.indexOf(selectedNurseId))
+            }
         }
+
     }
 
     private fun savePatient() {

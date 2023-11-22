@@ -9,16 +9,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.comp304.bastian.bastian.lab4.R
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
-import com.comp304.bastian.bastian.lab4.database.NurseSystemDB
 import com.comp304.bastian.bastian.lab4.databinding.ActivityHomeBinding
 import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
 
-class HomeActivity : AppCompatActivity() {
+class PatientsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var database: MedicalDatabase
     //private lateinit var database: NurseSystemDB
@@ -31,8 +29,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //
-        //database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
         database = MedicalDatabase.getInstance(baseContext)
         viewModel.initDatabase(database)
         //load patients
@@ -76,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
             }
             R.id.addPatientButton->{
 
-                val intent = Intent(this, AddPatientActivity::class.java)
+                val intent = Intent(this, AddEditPatientActivity::class.java)
 
                 startActivity(intent)
                 return true

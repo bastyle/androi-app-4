@@ -39,8 +39,8 @@ class AddTestActivity():AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.setDatabase(MedicalDatabase.getInstance(baseContext))
-        patientId = intent.getStringExtra(TestsActivity.ID_PATIENT_KEY).toString()
-        patientName = intent.getStringExtra(TestsActivity.PATIENT_NAME_KEY).toString()
+        patientId = intent.getStringExtra(GlobalUtil.ID_PATIENT_KEY).toString()
+        patientName = intent.getStringExtra(GlobalUtil.PATIENT_NAME_KEY).toString()
         binding.editTextPatientId.setText(patientName+" ID: "+patientId)
 
 

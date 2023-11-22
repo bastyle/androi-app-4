@@ -22,8 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.LoginActivity"/>
-        <activity android:name=".view.HomeActivity"/>
-        <activity android:name=".view.AddPatientActivity"/>
+        <activity android:name=".view.PatientsActivity"/>
+        <activity android:name=".view.AddEditPatientActivity"/>
         <activity android:name=".view.TestsActivity"/>
         <activity android:name=".view.AddTestActivity"/>
     </application>

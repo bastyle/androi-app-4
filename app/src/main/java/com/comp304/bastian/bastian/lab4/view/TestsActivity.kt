@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.database.PatientEntity
 import com.comp304.bastian.bastian.lab4.databinding.ActivityTestsBinding
+import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.viewmodel.TestsViewModel
 import kotlinx.coroutines.launch
 
@@ -23,8 +24,8 @@ class TestsActivity(): AppCompatActivity() {
     private lateinit var adapter: TestsActivityViewAdapter
 
     companion object{
-        public const val ID_PATIENT_KEY = "ID_PATIENT_KEY"
-        public const val PATIENT_NAME_KEY = "PATIENT_NAME_KEY"
+       // public const val ID_PATIENT_KEY = "ID_PATIENT_KEY"
+        //public const val PATIENT_NAME_KEY = "PATIENT_NAME_KEY"
         private const val TAG = "TestsActivity"
     }
 
@@ -34,7 +35,7 @@ class TestsActivity(): AppCompatActivity() {
         binding = ActivityTestsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         database = MedicalDatabase.getInstance(baseContext)//
-        patientId = intent.getStringExtra(ID_PATIENT_KEY).toString()
+        patientId = intent.getStringExtra(GlobalUtil.ID_PATIENT_KEY).toString()
         viewModel.setDatabase(database, patientId.toInt())
 
         adapter = TestsActivityViewAdapter(baseContext)
@@ -61,11 +62,9 @@ class TestsActivity(): AppCompatActivity() {
         }
 
         binding.addTestButton.setOnClickListener {
-            //TODO add logic to add new test (new activity?) use activity_add_test.xml to create one
-
             val intent = Intent(this, AddTestActivity::class.java)
-            intent.putExtra(ID_PATIENT_KEY, patientId)
-            intent.putExtra(PATIENT_NAME_KEY, patient.firstName + " " +patient.lastName)
+            intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
+            intent.putExtra(GlobalUtil.PATIENT_NAME_KEY, patient.firstName + " " +patient.lastName)
             //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

@@ -10,7 +10,13 @@ object GlobalUtil {
 
     private const val TAG= "GlobalUtil"
     private const val MY_PREFS="MyPrefs"
-    public const val NURSE_ID_KEY="NurseId"
+    const val NURSE_ID_KEY="NurseId"
+    const val ID_PATIENT_KEY = "ID_PATIENT_KEY"
+    const val IS_EDITION = "IS_EDITION_KEY"
+    const val PATIENT_NAME_KEY = "PATIENT_NAME_KEY"
+    const val PATIENT_FNAME_KEY = "PATIENT_FNAME_KEY"
+    const val PATIENT_LNAME_KEY = "PATIENT_LNAME_KEY"
+    const val ROOM_NAME_KEY = "ROOM_NAME_KEY"
 
     fun addLoginStatus(context:Context, isLoggedIn:Boolean){
         val sharedPreferences = context.getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE)

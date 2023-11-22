@@ -29,7 +29,20 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding, p
             Log.e(TAG,"tests button: "+idPatient)
 
             val intent = Intent(context, TestsActivity::class.java)
-            intent.putExtra(TestsActivity.ID_PATIENT_KEY, idPatient)
+            intent.putExtra(GlobalUtil.ID_PATIENT_KEY, idPatient)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(intent)
+        }
+
+        binding.editPatientInfo.setOnClickListener {
+            Log.e(TAG,"go to editPatientInfo: "+idPatient)
+            val intent = Intent(context, AddEditPatientActivity::class.java)
+            intent.putExtra(GlobalUtil.IS_EDITION, true)
+            intent.putExtra(GlobalUtil.ID_PATIENT_KEY, idPatient.toInt())
+            intent.putExtra(GlobalUtil.PATIENT_FNAME_KEY, item.firstName)
+            intent.putExtra(GlobalUtil.PATIENT_LNAME_KEY, item.lastName)
+            intent.putExtra(GlobalUtil.ROOM_NAME_KEY, item.room)
+            intent.putExtra(GlobalUtil.NURSE_ID_KEY, item.nurseId)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }

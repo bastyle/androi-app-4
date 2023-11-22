@@ -135,7 +135,7 @@ class AddEditPatientActivity():AppCompatActivity() {
                     || firstName.length> ValidationUtils.MAX_LENGTH)
                     || (lastName.length<ValidationUtils.MIN_LENGTH
                     || lastName.length>ValidationUtils.MAX_LENGTH) ){
-            Toast.makeText(this, "Names must be at least $ValidationUtils.MIN_LENGTH characters and maximum $ValidationUtils.MAX_LENGTH.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Names must be at least "+ ValidationUtils.MIN_LENGTH +" and maximum "+ValidationUtils.MAX_LENGTH+" characters.", Toast.LENGTH_SHORT).show()
             return false
         }else if(!firstName.matches(Regex("[a-zA-Z ]+")) || !lastName.matches(Regex("[a-zA-Z ]+"))){
             Toast.makeText(this, "Names only accept alphabetical characters.", Toast.LENGTH_SHORT).show()

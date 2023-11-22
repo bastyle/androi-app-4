@@ -62,6 +62,7 @@ class AddTestActivity():AppCompatActivity() {
         val bpl = binding.editTextBPL.text.toString().trim()
         val bph = binding.editTextBPH.text.toString().trim()
         val temperature = binding.editTextTemperature.text.toString().trim()
+
         // Validate inputs and save the test
         if (validateInputs(department, bpl, bph, temperature)) {
             val newTest = TestEntity(
@@ -71,8 +72,8 @@ class AddTestActivity():AppCompatActivity() {
                 BPL = bpl.toFloat(),
                 BPH = bph.toFloat(),
                 temperature = temperature.toFloat(),
-                urine = "",
-                xRay = ""
+                urine = binding.editTextUrine.text.toString(),
+                xRay = binding.editTextXRay.text.toString()
             )
             viewModel.saveNewTest(newTest)
             Toast.makeText(this, "Test added successfully!", Toast.LENGTH_LONG).show()
@@ -89,7 +90,7 @@ class AddTestActivity():AppCompatActivity() {
             Toast.makeText(this, "Department only accept alphabetical characters.", Toast.LENGTH_SHORT).show()
             return false
         }else if( (!ValidationUtils.isValidLength(department)) ){
-            Toast.makeText(this, "Department must be at least ${ValidationUtils.MIN_LENGTH} and maximum ${ValidationUtils.MAX_LENGTH} characters.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Department must be at least "+ ValidationUtils.MIN_LENGTH +" and maximum "+ValidationUtils.MAX_LENGTH+" characters.", Toast.LENGTH_SHORT).show()
             return false
         }else if(!ValidationUtils.isFloatNumber(bph) || !ValidationUtils.isFloatNumber(bpl) || !ValidationUtils.isFloatNumber(temperature)){
             Toast.makeText(this, "BPL,BPH, and Temperature must be a float number.", Toast.LENGTH_SHORT).show()

@@ -122,7 +122,7 @@
             android:id="@+id/editTextTemperature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:hint="Enter Temperature"/>
     </LinearLayout>
 
@@ -160,7 +160,7 @@
             android:id="@+id/editTextXRay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:hint="XRay Test Comment (optional)"/>
     </LinearLayout>
 

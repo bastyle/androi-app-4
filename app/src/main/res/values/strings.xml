@@ -7,4 +7,5 @@
     <string name="addEditPatientButtonText">Save</string>
     <string name="saveTestButtonText">Save Test</string>
     <string name="addNewTestButtonText">Add new Test</string>
+    <integer name="MAX_LENGTH">12</integer>
 </resources>

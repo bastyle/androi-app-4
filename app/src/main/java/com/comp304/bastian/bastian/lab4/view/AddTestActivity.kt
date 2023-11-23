@@ -1,11 +1,19 @@
 package com.comp304.bastian.bastian.lab4.view
 
 import android.R
+import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -68,7 +76,59 @@ class AddTestActivity():AppCompatActivity() {
 
         binding.buttonSaveTest.setOnClickListener {
             Log.d(TAG,"save...")
+            //performAnimation(com.comp304.bastian.bastian.lab4.R.anim.slide_in)
             saveTest()
+
+        }
+
+
+
+        binding.cancel.setOnClickListener {
+            if(!patientId.isNullOrBlank() && "null" != patientId){
+                val intent = Intent(this, TestsActivity::class.java)
+                intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
+                startActivity(intent)
+                finish()
+            }else {
+                val intent = Intent(this, TestsActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+        }
+    }
+
+    private fun performAnimation(animationResourceID: Int) {
+        // We will animate the imageview
+        val reusableImageView: ImageView = binding.testImage
+        //reusableImageView.setImageResource(com.comp304.bastian.bastian.lab4.R.drawable.tests2)
+        //reusableImageView.setVisibility(View.VISIBLE)
+
+        // Load the appropriate animation
+        val an: Animation = AnimationUtils.loadAnimation(this, animationResourceID)
+        // Register a listener, so we can disable and re-enable buttons
+        an.setAnimationListener(MyAnimationListener())
+
+        // Start the animation
+        reusableImageView.startAnimation(an)
+
+    }
+
+    internal inner class MyAnimationListener : Animation.AnimationListener {
+        override fun onAnimationEnd(animation: Animation) {
+            //performAnimation(com.comp304.bastian.bastian.lab4.R.anim.slide_in)
+            Log.e(TAG,"finishing animation...")
+            Toast.makeText(baseContext, "Test added successfully!", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+
+        override fun onAnimationRepeat(animation: Animation) {
+            // what to do when animation loops
+        }
+
+        override fun onAnimationStart(animation: Animation) {
+            // Disable all buttons while animation is running
+            //toggleButtons(false)
         }
     }
 
@@ -90,8 +150,10 @@ class AddTestActivity():AppCompatActivity() {
 
         if(! patientId.isNullOrBlank() && "null" != patientId){
             binding.spinnerPatientId.setSelection(spinnerValues.indexOfFirst { it.contains("($patientId)") })
+            binding.spinnerPatientId.isEnabled=false
         }
         //binding.spinnerPatientId.setSelection(patientsList[0].id)
+
     }
 
     private fun saveTest() {
@@ -114,8 +176,13 @@ class AddTestActivity():AppCompatActivity() {
                 xRay = binding.editTextXRay.text.toString()
             )
             viewModel.saveNewTest(newTest)
-            Toast.makeText(this, "Test added successfully!", Toast.LENGTH_LONG).show()
-            finish()
+            performAnimation(com.comp304.bastian.bastian.lab4.R.anim.slide_in)
+            //Toast.makeText(this, "Test added successfully!", Toast.LENGTH_LONG).show()
+            //finish()
+            /*   val handler = Handler(Looper.getMainLooper())
+            handler.postDelayed({
+                finish()
+            },2000)*/
         }
     }
 
@@ -156,5 +223,24 @@ class AddTestActivity():AppCompatActivity() {
             binding.spinnerNurseId.setSelection(nurseList.indexOf(selectedNurseId))
         }
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        Log.d(TAG,"onCreateOptionsMenu..........")
+        menuInflater.inflate(com.comp304.bastian.bastian.lab4.R.menu.menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            com.comp304.bastian.bastian.lab4.R.id.menu_logout -> {
+                GlobalUtil.logout(baseContext,this)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+
 
 }

@@ -4,7 +4,7 @@
     <string name="loginButtonText">Login</string>
     <string name="editPatientButtonText">Edit Patient</string>
     <string name="testButtonText">Tests</string>
-    <string name="addEditPatientButtonText">Save Patient</string>
+    <string name="addEditPatientButtonText">Save</string>
     <string name="saveTestButtonText">Save Test</string>
     <string name="addNewTestButtonText">Add new Test</string>
 </resources>

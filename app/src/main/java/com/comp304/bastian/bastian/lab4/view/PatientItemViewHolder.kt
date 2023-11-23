@@ -30,6 +30,7 @@ class PatientItemViewHolder(private val binding: PatientItemViewHolderBinding, p
 
             val intent = Intent(context, TestsActivity::class.java)
             intent.putExtra(GlobalUtil.ID_PATIENT_KEY, idPatient)
+            intent.putExtra(GlobalUtil.PATIENT_NAME_KEY, item.firstName+" "+item.lastName)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }

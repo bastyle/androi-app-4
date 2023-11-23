@@ -13,13 +13,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/textInfo"
         android:textSize="24dp"
         android:textStyle="bold"
-        android:text="Patient XXX"
+        android:text="XXX"
         android:gravity="center_horizontal"
         android:layout_margin="4dp"/>
 
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/patientInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:text="Tests:"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_margin="1dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -39,7 +39,7 @@ class TestsViewModel: ViewModel() {
     }
 
 
-    private fun getAllTests(){
+    public fun getAllTests(){
         viewModelScope.launch {
             val testsList = repo.getAllTests()
             Log.d("TestsViewModel","getAllTests size: "+testsList.size)

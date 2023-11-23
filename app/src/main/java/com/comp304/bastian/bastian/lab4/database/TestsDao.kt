@@ -25,7 +25,7 @@ interface TestsDao {
 
     @Query(
         """
-            SELECT * FROM tests ORDER BY testId ASC
+            SELECT * FROM tests ORDER BY testId DESC
         """
     )
     fun getAllTests(): List<TestEntity>

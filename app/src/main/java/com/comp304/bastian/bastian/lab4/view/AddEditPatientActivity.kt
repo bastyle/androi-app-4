@@ -1,8 +1,11 @@
 package com.comp304.bastian.bastian.lab4.view
 
 import android.R
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -150,5 +153,28 @@ class AddEditPatientActivity():AppCompatActivity() {
 
 
         return true
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        Log.d(TAG,"onCreateOptionsMenu..........")
+        menuInflater.inflate(com.comp304.bastian.bastian.lab4.R.menu.menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            com.comp304.bastian.bastian.lab4.R.id.menu_logout -> {
+                GlobalUtil.logout(baseContext,this)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun goBack(){
+        val intent = Intent(this, PatientsActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

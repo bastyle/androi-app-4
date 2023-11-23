@@ -70,6 +70,13 @@ class PatientsActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.home->{
+
+            val intent = Intent(this, HomeActivity::class.java)
+
+            startActivity(intent)
+            return true
+        }
             // Add other cases if needed
             else -> return super.onOptionsItemSelected(item)
         }

@@ -19,6 +19,13 @@ class TestsRepo(private val database: MedicalDatabase) {
         }
     }
 
+    suspend fun getAllTests() : List<TestEntity> {
+        return withContext(Dispatchers.IO) {
+            Log.e(TAG,"getAllTests")
+            database.testsDao().getAllTests()
+        }
+    }
+
     suspend fun saveNewTest(test: TestEntity) {
         return withContext(Dispatchers.IO) {
             Log.e(TAG,"saveNewTest p.id: "+test.patientId)

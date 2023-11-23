@@ -25,6 +25,13 @@ interface TestsDao {
 
     @Query(
         """
+            SELECT * FROM tests ORDER BY testId ASC
+        """
+    )
+    fun getAllTests(): List<TestEntity>
+
+    @Query(
+        """
             SELECT count(*) FROM tests            
         """
     )

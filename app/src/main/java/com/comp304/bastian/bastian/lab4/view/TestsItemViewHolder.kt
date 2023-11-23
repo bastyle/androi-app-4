@@ -31,13 +31,6 @@ class TestsItemViewHolder(private val binding: TestItemViewHolderBinding, privat
         binding.textViewUrine.text="Urine: "+item.urine
         binding.textViewXRay.text="XRay: "+item.xRay
 
-        /*binding..setOnClickListener {
-            Log.e(TAG, "tests button: " + idPatient)
 
-            val intent = Intent(context, TestsActivity::class.java)
-            intent.putExtra(TestsActivity.ID_PATIENT_KEY, idPatient)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            context.startActivity(intent)
-        }*/
     }
 }

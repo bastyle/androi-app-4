@@ -24,8 +24,6 @@ class TestsActivity(): AppCompatActivity() {
     private lateinit var adapter: TestsActivityViewAdapter
 
     companion object{
-       // public const val ID_PATIENT_KEY = "ID_PATIENT_KEY"
-        //public const val PATIENT_NAME_KEY = "PATIENT_NAME_KEY"
         private const val TAG = "TestsActivity"
     }
 
@@ -36,11 +34,14 @@ class TestsActivity(): AppCompatActivity() {
         setContentView(binding.root)
         database = MedicalDatabase.getInstance(baseContext)//
         patientId = intent.getStringExtra(GlobalUtil.ID_PATIENT_KEY).toString()
-        viewModel.setDatabase(database, patientId.toInt())
 
+        if(patientId.isNullOrBlank() || "null" == patientId){
+            viewModel.setDatabase(database)
+        }else  {
+            viewModel.setDatabase(database, patientId.toInt())
+        }
         adapter = TestsActivityViewAdapter(baseContext)
 
-        //viewModel.getAllTestsByPatientId(1)
 
         binding.recyclerView.adapter=this.adapter
         binding.recyclerView.layoutManager =
@@ -52,19 +53,20 @@ class TestsActivity(): AppCompatActivity() {
                 adapter.updateList(it)
             }
         }
-        //database.patientDao().getPatientById(patientId = patientId.toInt())
-        //binding.patientInfo.text="Patient: "+database.patientDao().getPatientById(patientId = patientId.toInt()).firstName
-        lifecycleScope.launch {
+
+       /* lifecycleScope.launch {
             viewModel.patient.observe(this@TestsActivity) { pat->
                 binding.patientInfo.text= "Patient: "+ pat.firstName+" "+ pat.lastName
                 patient = pat
             }
-        }
+        }*/
+        binding.patientInfo.text="Nurse: "+ (GlobalUtil.getSharedPrefStr(this, GlobalUtil.NURSE_ID_KEY)
+            ?.uppercase() ?: "")
 
         binding.addTestButton.setOnClickListener {
             val intent = Intent(this, AddTestActivity::class.java)
-            intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
-            intent.putExtra(GlobalUtil.PATIENT_NAME_KEY, patient.firstName + " " +patient.lastName)
+            //intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
+            //intent.putExtra(GlobalUtil.PATIENT_NAME_KEY, patient.firstName + " " +patient.lastName)
             //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }

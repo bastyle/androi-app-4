@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        Log.d("","onCreate...")
-
-        //database = Room.databaseBuilder(applicationContext, MedicalDatabase::class.java, "MedicalCentre").fallbackToDestructiveMigration().build()
+        Log.d("MainActivity","onCreate...")
         database = MedicalDatabase.getInstance(baseContext)
         viewModel.initDatabase(database)
 
@@ -28,8 +26,10 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
         Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn")
+
         if(isLoggedIn){
-            val intent = Intent(this, PatientsActivity::class.java)
+            //val intent = Intent(this, PatientsActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }else{

@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.comp304.bastian.bastian.lab4.R
 import com.comp304.bastian.bastian.lab4.database.MedicalDatabase
 import com.comp304.bastian.bastian.lab4.databinding.ActivityHomeBinding
+import com.comp304.bastian.bastian.lab4.databinding.ActivityPatientsBinding
 import com.comp304.bastian.bastian.lab4.util.GlobalUtil
 import com.comp304.bastian.bastian.lab4.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.launch
 
 class PatientsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityPatientsBinding
     private lateinit var database: MedicalDatabase
     //private lateinit var database: NurseSystemDB
     private val viewModel: MainActivityViewModel by viewModels()
@@ -25,9 +26,9 @@ class PatientsActivity : AppCompatActivity() {
     private lateinit var adapter: PatientsActivityViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("Home","oncreate..........")
+        Log.d("PatientsActivity","oncreate..........")
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityPatientsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         database = MedicalDatabase.getInstance(baseContext)
         viewModel.initDatabase(database)
@@ -48,14 +49,6 @@ class PatientsActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        Log.d("Home","onCreateOptionsMenu..........")
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }*/
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         Log.d("Home","onCreateOptionsMenu..........")

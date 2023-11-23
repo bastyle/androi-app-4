@@ -38,6 +38,19 @@ class TestsViewModel: ViewModel() {
         }
     }
 
+
+    private fun getAllTests(){
+        viewModelScope.launch {
+            val testsList = repo.getAllTests()
+            Log.d("TestsViewModel","getAllTests size: "+testsList.size)
+            if (testsList != null) {
+                _testsStateFlow.update {
+                    testsList
+                }
+            }
+        }
+    }
+
     fun getPatientInfo(patientId:Int) {
         viewModelScope.launch {
             /*val p = patientRepo.getPatientById(patientId)
@@ -65,7 +78,8 @@ class TestsViewModel: ViewModel() {
     fun setDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = TestsRepo(database)
-
+        addDefaultTests()
+        getAllTests()
     }
 
     fun setDatabase(medicalDatabase: MedicalDatabase, patientId:Int) {

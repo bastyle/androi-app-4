@@ -22,13 +22,16 @@ class AddTestViewModel: ViewModel() {
     private val _nursesStateFlow = MutableStateFlow(emptyList<String>())
     val nursesIdStateFlow: StateFlow<List<String>> = _nursesStateFlow.asStateFlow()
 
+    private val _patientsStateFlow = MutableStateFlow(emptyList<PatientEntity>())
+    val patientsStateFlow: StateFlow<List<PatientEntity>> = _patientsStateFlow.asStateFlow()
+
     fun saveNewTest(test: TestEntity){
         viewModelScope.launch {
             repo.saveNewTest(test)
         }
     }
 
-    fun getNurses() {
+    private fun getNurses() {
         viewModelScope.launch {
             val nurseIds = patientRepo.getAllNurseIds()
             Log.e("AddTestViewModel","getNurses")
@@ -41,10 +44,24 @@ class AddTestViewModel: ViewModel() {
         }
     }
 
+    private fun getPatients() {
+        viewModelScope.launch {
+            val patientList = patientRepo.getAllPatients()
+            Log.e("AddTestViewModel","getPatients")
+            if (patientList != null) {
+                Log.e("AddTestViewModel","!= null")
+                _patientsStateFlow.update {
+                    patientList
+                }
+            }
+        }
+    }
+
     fun setDatabase(medicalDatabase: MedicalDatabase) {
         database = medicalDatabase
         repo = TestsRepo(database)
         patientRepo = PatientRepo(database)
         getNurses()
+        getPatients()
     }
 }

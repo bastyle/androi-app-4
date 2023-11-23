@@ -65,7 +65,7 @@ class TestsActivity(): AppCompatActivity() {
 
         binding.addTestButton.setOnClickListener {
             val intent = Intent(this, AddTestActivity::class.java)
-            //intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
+            intent.putExtra(GlobalUtil.ID_PATIENT_KEY, patientId)
             //intent.putExtra(GlobalUtil.PATIENT_NAME_KEY, patient.firstName + " " +patient.lastName)
             //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
